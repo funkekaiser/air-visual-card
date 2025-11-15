@@ -2,7 +2,7 @@
 // Plant Picture Card: https://github.com/badguy99/PlantPictureCard/blob/master/dist/PlantPictureCard.js
 // UPDATE FOR EACH RELEASE!!! From aftership-card. Version # is hard-coded for now.
 console.info(
-  '%c  AIR-VISUAL-CARD  \n%c  Version 2.0.4',
+  '%c  AIR-VISUAL-CARD  \n%c  Version 2.0.5',
   'color: orange; font-weight: bold; background: black',
   'color: white; font-weight: bold; background: dimgray',
 );
@@ -483,24 +483,24 @@ class AirVisualCard extends HTMLElement {
 
 
       root.lastChild.hass = hass;
-      root.getElementById('content').innerHTML = card_content;
+      root.querySelector('#content').innerHTML = card_content;
 
       // hard-coded version of click event
       if (!hideFace){
-	      card.querySelector('#face').addEventListener('click', event => {   // when selecting HTML id, do not use dash '-'
+	      card.shadowRoot.querySelector('#face').addEventListener('click', event => {   // when selecting HTML id, do not use dash '-'
         fireEvent(this, "hass-more-info", { entityId: aqiSensor.config });
         });
       }
       if (!hideAQI){
-        card.querySelector('#aqiSensor').addEventListener('click', event => {   // when selecting HTML id, do not use dash '-'
+        card.shadowRoot.querySelector('#aqiSensor').addEventListener('click', event => {   // when selecting HTML id, do not use dash '-'
         fireEvent(this, "hass-more-info", { entityId: aqiSensor.config });
         });
       }
       if (!hideAPL){
-        card.querySelector('#aplSensor').addEventListener('click', event => {   // when selecting HTML id, do not use dash '-'
+        card.shadowRoot.querySelector('#aplSensor').addEventListener('click', event => {   // when selecting HTML id, do not use dash '-'
           fireEvent(this, "hass-more-info", { entityId: aplSensor.config });
         });
-        card.querySelector('#mainPollutantSensor').addEventListener('click', event => {   // when selecting HTML id, do not use dash '-'  
+        card.shadowRoot.querySelector('#mainPollutantSensor').addEventListener('click', event => {   // when selecting HTML id, do not use dash '-'  
           fireEvent(this, "hass-more-info", { entityId: mainPollutantSensor.config });
         });
       }
